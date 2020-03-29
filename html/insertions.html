@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="it-IT">
+<head>
+	<title>Insertions</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="../css/styleinsertions.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="../js/checkdata.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <form action= "http://localhost/Esercitazione database musei/SRC/php/insertdatadb.php" method="POST" id="musform">
+    <div class="row">
+      <div class="col-sm-5">
+      <table class="table table-dark table-hover" id="mus_table">
+        <thead><tr><th colspan="2" class="mus">Insert museum</th></td></tr></thead>
+        <tbody>
+        <tr><th class="mus">Name</th><td><input type="text" class="form-control" name="name" maxlength="40" required="true"></td></tr>
+        <tr><th class="mus">City</th><td><input type="text" class="form-control" name="city" maxlength="30" required="true"></td></tr>
+        <tr><th class="mus">Address</th><td><input type="text" class="form-control" name="address" maxlength="30" required="true"></td></tr>
+        <tr><th class="mus">Manager name</th><td><input type="text" class="form-control" name="man_name" maxlength="20"></td></tr>
+        <tr><th class="mus">Manager surname</th><td><input type="text" class="form-control" name="man_surname" maxlength="20"></td></tr>
+        <thead><tr><th colspan="2" class="mus"><input type="submit" value="PUT MUSEUM" name="putmuseum"></th></tr></thead>
+        </tbody>
+        </table>
+        </form>
+      </div>
+  <div  class="col-sm-5">
+  <form action= "http://localhost/Esercitazione database musei/SRC/php/insertdatadb.php" method="POST" id="artform">
+  <table class="table table-hover" id="art_table">
+        <thead><tr class="table-warning"><th colspan="2" class="art">Insert artist</th></td></tr></thead>
+        <tbody>
+        <tr class="table-warning"><th class="art">Name</th><td><input type="text" name="art_name" class="form-control" maxlength="30" required="true" ></td></tr>
+        <tr class="table-warning"><th class="art">Surname</th><td><input type="text" name="art_surname" class="form-control" maxlength="30" required="true" ></td></tr>
+        <tr class="table-warning"><th class="art">Country</th><td><input type="text" name="country" class="form-control" maxlength="20" required="true"></td></tr>
+        <tr class="table-warning"><th class="art">Date of birth</th><td><input type="date" name="dob" class="form-control" required="true"></td></tr>
+        <tr class="table-warning"><th class="art">Date of death</th><td><input type="date" name="dod" class="form-control"></td></tr>
+        <thead><tr class="table-warning"><th colspan="2" class="art"><input type="submit" value="PUT ARTIST" name="putartist" ></th></tr></thead>
+        </tbody>
+  </table>
+  </form>
+  </div>
+  </div>
+  </div>
+
+  <br><br>
+
+  <div class="container">
+    <form action= "http://localhost/Esercitazione database musei/SRC/php/insertdatadb.php" method="POST" id="workform">
+    <div class="row">
+    <div class="col-sm-5">
+        <table class="table table-hover" id="work_table">
+        <thead><tr class="table-success" ><th colspan="2" class="work">Insert work</th></td></tr></thead>
+        <tr class="table-success"><th class="work">Work name</th><td><input type="text" name="work_name" class="form-control" maxlength="40" required="true"></td></tr>
+        <tr class="table-success"><th class="work">Museum's name</th><td><input type="text" name="mus_name" class="form-control" maxlength="40"></td></tr>
+        <tr class="table-success"><th class="work">Artist's name</th><td><input type="text" name="artist_name" class="form-control" maxlength="30" required="true"></td></tr>
+        <tr class="table-success"><th class="work">Artist's surname</th><td><input type="text" name="artist_surname" class="form-control" maxlength="30" required="true"></td></tr>
+        <tr class="table-success"><th class="work">Painting type</th><td><input type="text" name="painting" class="form-control" maxlength="20"></td></tr>
+        <tr class="table-success"><th class="work">Size</th><td><input type="search" name="size" class="form-control" maxlength="20"></td></tr>
+        <thead><tr class="table-success"><th colspan="2" class="work"><input type="submit" value="PUT WORK" name="putwork"></th></tr></thead>
+    </table>
+    </form>
+    </div>
+  <div class="col-sm-5">
+  <form action= "http://localhost/Esercitazione database musei/SRC/php/insertdatadb.php" method="POST" id="sculpform">
+  <table class="table table-hover" id="sculp_table">
+        <thead><tr class="table-primary"><th colspan="2" class="sculpture">Insert scuplture</th></td></tr></thead>
+        <tr class="table-primary"><th class="sculpture">Scuplture name</th><td><input type="text" name="sculpture_name" class="form-control" maxlength="40" required="true"></td></tr>
+        <tr class="table-primary"><th class="sculpture">Museum's name</th><td><input type="text" name="museum_name" class="form-control" maxlength="40"></td></tr>
+        <tr class="table-primary"><th class="sculpture">Artist's name</th><td><input type="text" name="a_name" class="form-control" maxlength="30" required="true"></td></tr>
+        <tr class="table-primary"><th class="sculpture">Artist's surname</th><td><input type="text" name="a_surname" class="form-control" maxlength="30" required="true"></td></tr>
+        <tr class="table-primary"><th class="sculpture">Material</th><td><input type="text" name="material" class="form-control" maxlength="20"></td></tr>
+        <tr class="table-primary"><th class="sculpture">Height</th><td><input type="number" name="height" class="form-control"></td></tr>
+        <tr class="table-primary"><th class="sculpture">Weight</th><td><input type="number" name="weight" class="form-control"></td></tr>
+        <thead><tr class="table-primary"><th colspan="2" class="sculpture"><input type="submit" value="PUT SCULPTURE" name="putscuplture"></th></tr></thead>
+  </table>
+  </form>
+  </div>
+
+</div>
+
+</div>
+</form>
+
+      <button class="btn btn-warning" onClick="location.href = 'musei.html'"> Go back</button>
+
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Database Query</title>
+    <link rel="stylesheet" type="text/css" href="../css/stylequery.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="../js/handlequery.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+</head>
+<body>
+
+<h1><span class="badge badge-primary"> CHOOSE BY:</span></h1>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-2">
+            <select id="my_select">
+                <option></option>
+                <option id="museum">Museum</option>
+                <option id="artist">Artist</option>
+            </select>
+        </div>
+
+        <div class="col-sm-2">
+            <div id="db_container"></div>
+        </div>
+
+    </div>
+</div>
+
+
+<br><br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-5">
+            <form action="http://localhost/Esercitazione database musei/SRC/php/queryresponse.php" method="POST"
+                  id="workqueryform">
+                <table class="table table-hover" id="worktable">
+                    <thead>
+                    <tr class="table-danger">
+                        <th colspan="2" class="work">WORK</th>
+                        </td></tr>
+                    </thead>
+                    <input type="hidden" name="par1" value="">
+                    <input type="hidden" name="par2" value="">
+                    <tr class="table-danger">
+                        <th class="work">Work name</th>
+                        <td><input type="text" name="work_name" class="form-control" maxlength="40"></td>
+                    </tr>
+                    <tr class="table-danger">
+                        <th class="work">Museum's name</th>
+                        <td><input type="text" name="mus_name" class="form-control" maxlength="40"></td>
+                    </tr>
+                    <tr class="table-danger">
+                        <th class="work">Artist's name</th>
+                        <td><input type="text" name="artist_name" class="form-control" maxlength="30"></td>
+                    </tr>
+                    <tr class="table-danger">
+                        <th class="work">Artist's surname</th>
+                        <td><input type="text" name="artist_surname" class="form-control" maxlength="30"></td>
+                    </tr>
+                    <tr class="table-danger">
+                        <th class="work">Painting type</th>
+                        <td><input type="text" name="painting" class="form-control" maxlength="20"></td>
+                    </tr>
+                    <thead>
+                    <tr class="table-danger">
+                        <th colspan="2" class="work"><input type="submit" value="SEARCH WORK" name="workquery"></th>
+                    </tr>
+                    </thead>
+                </table>
+            </form>
+        </div>
+        <div class="col-sm-5">
+            <form action="http://localhost/Esercitazione database musei/SRC/php/queryresponse.php" method="POST"
+                  id="sculpqueryform">
+                <table class="table table-hover" id="sculptable">
+                    <thead>
+                    <tr class="table-warning">
+                        <th colspan="2" class="sculpture">SCULPTURE</th>
+                        </td></tr>
+                    </thead>
+                    <input type="hidden" name="par3" value="">
+                    <input type="hidden" name="par4" value="">
+                    <tr class="table-warning">
+                        <th class="sculpture">Scuplture name</th>
+                        <td><input type="text" name="sculpture_name" class="form-control" maxlength="40"></td>
+                    </tr>
+                    <tr class="table-warning">
+                        <th class="sculpture">Museum's name</th>
+                        <td><input type="text" name="museum_name" class="form-control" maxlength="40"></td>
+                    </tr>
+                    <tr class="table-warning">
+                        <th class="sculpture">Artist's name</th>
+                        <td><input type="text" name="a_name" class="form-control" maxlength="30"></td>
+                    </tr>
+                    <tr class="table-warning">
+                        <th class="sculpture">Artist's surname</th>
+                        <td><input type="text" name="a_surname" class="form-control" maxlength="30"></td>
+                    </tr>
+                    <tr class="table-warning">
+                        <th class="sculpture">Material</th>
+                        <td><input type="text" name="material" class="form-control" maxlength="20"></td>
+                    </tr>
+                    <thead>
+                    <tr class="table-warning">
+                        <th colspan="2" class="sculpture"><input type="submit" value="SEARCH SCULPTURE"
+                                                                 name="sculpturequery"></th>
+                    </tr>
+                    </thead>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+<button style="margin-left: 47%" class="btn btn-warning" onClick="location.href = 'musei.html'"> Go back</button>
+
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="it-IT">
+<head>
+    <title>Museums</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="../css/museumsstyle.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#home_table").animate({left: '360px', top: '110px'}, 1500);
+
+            $(".btn").css("background-color", "white");
+            $(".btn").css("font-weight", "bold");
+            $(".btn").css("color", "black");
+
+            $.ajax({
+                url: '../php/checkDB.php',
+                data: {db: 'isdb'},
+                type: 'post',
+                success: function (output) {
+
+                    if (output.indexOf("false") >= 0) {
+
+                        $(".btn").prop('disabled', true);
+
+                    } else {
+                        $(".btn").prop('disabled', false);
+                    }
+
+                }
+            })
+
+        });
+    </script>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="col-sm-4">
+
+        <table class="table table-hover" id="home_table">
+            <tr class="table-primary">
+                <th> MUSEUMS DATABASE</th>
+            </tr>
+            <tr class="table-primary">
+                <td>
+                    <form action="http://localhost/Esercitazione database musei/SRC/php/createdb.php" method="POST"
+                          id="createDB">
+                        <button type="submit"> CREATE MUSEUMS DATABASE</button>
+                    </form>
+                </td>
+            </tr>
+            <tr class="table-primary">
+                <td>
+                    <form action="http://localhost/Esercitazione database musei/SRC/html/insertions.html" method="POST">
+                        <button class="btn"> INSERT MUSEUMS DATA</button>
+                    </form>
+                </td>
+            </tr>
+            <tr class="table-primary">
+                <form action="http://localhost/Esercitazione database musei/SRC/html/query.html" method="POST">
+                    <td>
+                        <button class="btn"> QUERY MUSEUMS DATABASE</button>
+                </form>
+                </td>
+            </tr>
+
+
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
