@@ -22,6 +22,7 @@ if (isset($_POST['action']) && !empty($_POST['action'])) {
 
 function updateWork()
 {
+    //This function concatenates the changed values from the user in order to change them inside DB.
 
     $sql = "UPDATE works SET ";
 
@@ -61,6 +62,8 @@ function updateWork()
 
 function updateSculp()
 {
+
+    //Same thing for sculptures.
 
     $sql = "UPDATE sculptures SET ";
 
@@ -107,7 +110,7 @@ function updateSculp()
     @mysqli_close($conn);
 }
 
-    
+
 ?>
 
 </body>

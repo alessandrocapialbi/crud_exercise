@@ -19,6 +19,9 @@ $dbuser = 'root';
 $dbpass = '';
 $db = 'musei';
 
+
+//These four lines creates the tables inside db.
+
 $museums = "CREATE TABLE museums (museum_name varchar(40), city varchar(30) NOT NULL, address varchar(30) NOT NULL, man_name varchar(30), man_surname varchar(30), PRIMARY KEY(museum_name))";
 $artists = "CREATE TABLE artists (artist_name varchar(30), artist_surname varchar(30), country varchar(20) NOT NULL, date_of_birth date NOT NULL, date_of_death date, PRIMARY KEY(artist_name, artist_surname))";
 $works = "CREATE TABLE works (work_name varchar(40), mus_name varchar(40), artist_name varchar(30), artist_surname varchar(30), painting_type varchar(20), size varchar (20), FOREIGN KEY(mus_name) REFERENCES museums(museum_name), FOREIGN KEY(artist_name) REFERENCES artists(artist_name), FOREIGN KEY(artist_surname) REFERENCES artists(artist_surname), PRIMARY KEY(work_name))";
@@ -29,7 +32,7 @@ $tables = [
     'artists' => $artists,
     'works' => $works,
     'sculptures' => $sculptures
-];
+]; //This is an associative array to save all the commands to create the tables.
 
 $conn = @mysqli_connect($dbhost, $dbuser, $dbpass);
 
@@ -46,7 +49,7 @@ else
 
 $conn = @mysqli_connect($dbhost, $dbuser, $dbpass, $db);
 
-foreach ($tables as $k => $sql) {
+foreach ($tables as $k => $sql) { //This loop runs a query for each array value (that are the instructions to create tables).
     $key = array_search($sql, $tables);
     if (@mysqli_query($conn, $sql))
         echo "<h3 style='color: white'>Table $key created </h3>";

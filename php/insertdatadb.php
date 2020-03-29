@@ -15,6 +15,8 @@
 
 $query = '';
 
+//These functions insert data into the four tables of the DB when the user submits the form of insertions.html.
+
 function putIntoMuseums()
 {
 

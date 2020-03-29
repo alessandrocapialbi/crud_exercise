@@ -18,6 +18,7 @@
 
         <?php
 
+        //When one of the two forms of query.html is submitted one of these two function are called.
 
         if (isset($_POST['workquery'])) {
 
@@ -28,6 +29,8 @@
             $paintingType = $_POST['painting'];
             $sql = "SELECT * FROM works WHERE ";
 
+            /*In the next lines, if statements check what the user typed inside the form fields.
+            If the user typed something, it is being added to the SELECT.*/
 
             switch ($type_value) {
                 case 'Museum':
@@ -61,8 +64,10 @@
                 $sql .= 'painting_type = "' . $paintingType . '" AND ';
             }
 
-            $sql = rtrim($sql, 'AND ');
+            $sql = rtrim($sql, 'AND '); //This function delete the final AND to avoid errors.
             $sql .= ";";
+
+            //It prints the work table, which will contain all the query's values.
 
             echo '<table class="table table-hover" cellpadding="10" id = "workTable">';
             echo '<th colspan="15" style="color: white;">RESULT</th>';
@@ -96,6 +101,8 @@
             @mysqli_close($conn);
 
         } else {
+
+            //Same thing for sculptures.
 
             $conn = @mysqli_connect('localhost:3306', 'root', '', 'musei') or die ('Cannot connect to db');
             $type_value = $_POST['par3'];
@@ -199,14 +206,14 @@
         material: false,
         height: false,
         weight: false
-    };
+    }; //These two arrays let you know if the user changes query's fields.
 
     function editWork(b) {
 
         var index = Number(b.id.split(" ")[1]);
         index += 2;
-        var x = document.getElementById("workTable").rows[index].cells;
-        var f0 = x[0].innerHTML;
+        var x = document.getElementById("workTable").rows[index].cells; //You get the rows of the table.
+        var f0 = x[0].innerHTML; //These are the fields of the table. 0 is work name, 1 is museum name...
         var f1 = x[1].innerHTML;
         var f2 = x[2].innerHTML;
         var f3 = x[3].innerHTML;
@@ -220,7 +227,6 @@
         x[4].innerHTML = '<input type = "text" id = "painting" onchange = "changeWork(this);" name = "input" value ="' + f4 + '">';
         x[5].innerHTML = '<button class="btn btn-success" id = "confirm" name = "input">CONFIRM</button>';
 
-
         $('#confirm').click(function () {
 
             var values = {action: 'updateWork', WorkId: orig_work_name};
@@ -229,29 +235,32 @@
 
                 if (workEdits[key]) {
 
-                    values[key] = document.getElementById(key).value;
-
+                    values[key] = document.getElementById(key).value; /*If the user changed something, these new
+                    values are added.*/
                 }
             }
             $.ajax({
                 url: '../php/update.php',
                 data: values,
                 type: 'post',
-            });
+            }); //It sends all the values to update.php in order to update the work table.
 
-            window.location.reload();
+            window.location.reload(); //To see the new changes the page is reloaded.
         });
 
     }
 
-    function changeWork(input) {
-
+    function changeWork(input) { /*When the user types something new in the fields, the relative value inside the array
+     is set to true.*/
         workEdits[input.id] = true;
 
     }
 
 
     function editSculpture(b) {
+
+        //Same thing for sculptures.
+
         var index = Number(b.id.split(" ")[1]);
         index += 2;
         var x = document.getElementById("sculpTable").rows[index].cells;
@@ -305,7 +314,7 @@
 
     }
 
-    function deleteWork(b) {
+    function deleteWork(b) { //These two last functions delete a selected row of the table from the database.
 
         var index = Number(b.id.split(" ")[1]);
         index += 2;

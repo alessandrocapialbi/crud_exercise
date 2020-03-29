@@ -21,11 +21,13 @@ if (isset($_POST['action']) && !empty($_POST['action'])) {
     }
 }
 
+/*These two functions get the db values, museums or artist. These are called when the main select of query.html
+changes, so when the user choose between Museum or Artist.*/
 function getMuseums()
 {
 
     $conn = @mysqli_connect('localhost:3306', 'root', '', 'musei') or die ('Cannot connect to db');
-    echo "<select id = mus_select>";
+    echo "<select id = mus_select>"; //It prints a new select with the db museums values.
     echo "<option></option>";
     $result = @mysqli_query($conn, "SELECT museum_name FROM museums");
     if (!$result)
@@ -47,7 +49,7 @@ function getArtists()
 {
 
     $conn = @mysqli_connect('localhost:3306', 'root', '', 'musei') or die ('Cannot connect to db');
-    echo "<select id = art_select>";
+    echo "<select id = art_select>"; //It prints a new select with the db artists values.
     echo "<option></option>";
     $result = @mysqli_query($conn, "SELECT artist_surname FROM artists");
     if (!$result)
@@ -73,7 +75,7 @@ function getArtists()
 
         var mus_value = $("#mus_select option:selected").text();
         $('[name = "par2"]').val(mus_value);
-        $('[name = "par4"]').val(mus_value);
+        $('[name = "par4"]').val(mus_value); //These ones saves the museum's value (like Louvre, Uffizi...).
 
     });
 
@@ -81,7 +83,7 @@ function getArtists()
 
         var art_value = $("#art_select option:selected").text();
         $('[name = "par2"]').val(art_value);
-        $('[name = "par4"]').val(art_value);
+        $('[name = "par4"]').val(art_value); //These ones saves the artist's value (like Da Vinci, Buonarroti...).
 
     })
 </script>

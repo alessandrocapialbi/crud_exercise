@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="it-IT">
 <head>
+    <!--Homepage where you can choose between 3 options: create database, insert data and run a query.-->
     <title>Museums</title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="../css/museumsstyle.css">
@@ -11,19 +12,20 @@
     <script type="text/javascript">
         $(document).ready(function () {
 
-            $("#home_table").animate({left: '360px', top: '110px'}, 1500);
+            $("#home_table").animate({left: '360px', top: '110px'}, 1500); //It gives an animation to the main table.
 
             $(".btn").css("background-color", "white");
             $(".btn").css("font-weight", "bold");
             $(".btn").css("color", "black");
 
-            $.ajax({
+            $.ajax({  //This AJAX function checks if museum database exists or not.
                 url: '../php/checkDB.php',
                 data: {db: 'isdb'},
                 type: 'post',
                 success: function (output) {
 
-                    if (output.indexOf("false") >= 0) {
+                    if (output.indexOf("false") >= 0) { /*If it doesn't exist, you cannot insert data inside db or run
+                    a query, then buttons are disabled.*/
 
                         $(".btn").prop('disabled', true);
 
@@ -38,7 +40,7 @@
     </script>
 </head>
 <body>
-
+<!-- Declaration of the main table -->
 <div class="container">
 
     <div class="col-sm-4">
