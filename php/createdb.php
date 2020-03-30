@@ -24,8 +24,8 @@ $db = 'musei';
 
 $museums = "CREATE TABLE museums (museum_name varchar(40), city varchar(30) NOT NULL, address varchar(30) NOT NULL, man_name varchar(30), man_surname varchar(30), PRIMARY KEY(museum_name))";
 $artists = "CREATE TABLE artists (artist_name varchar(30), artist_surname varchar(30), country varchar(20) NOT NULL, date_of_birth date NOT NULL, date_of_death date, PRIMARY KEY(artist_name, artist_surname))";
-$works = "CREATE TABLE works (work_name varchar(40), mus_name varchar(40), artist_name varchar(30), artist_surname varchar(30), painting_type varchar(20), size varchar (20), FOREIGN KEY(mus_name) REFERENCES museums(museum_name), FOREIGN KEY(artist_name) REFERENCES artists(artist_name), FOREIGN KEY(artist_surname) REFERENCES artists(artist_surname), PRIMARY KEY(work_name))";
-$sculptures = "CREATE TABLE sculptures (sculpture_name varchar(40), museum_name varchar(40), art_name varchar(30), art_surname varchar(30), material varchar (20), height int, weight int, FOREIGN KEY(museum_name) REFERENCES museums(museum_name), FOREIGN KEY(art_name) REFERENCES artists(artist_name), FOREIGN KEY(art_surname) REFERENCES artists(artist_surname), PRIMARY KEY(sculpture_name))";
+$works = "CREATE TABLE works (work_name varchar(40), mus_name varchar(40) NOT NULL, artist_name varchar(30) NOT NULL, artist_surname NOT NULL, varchar(30), painting_type varchar(20), size varchar (20), FOREIGN KEY(mus_name) REFERENCES museums(museum_name), FOREIGN KEY(artist_name) REFERENCES artists(artist_name), FOREIGN KEY(artist_surname) REFERENCES artists(artist_surname), PRIMARY KEY(work_name))";
+$sculptures = "CREATE TABLE sculptures (sculpture_name varchar(40), museum_name varchar(40) NOT NULL, art_name varchar(30) NOT NULL, art_surname varchar(30) NOT NULL, material varchar (20), height int, weight int, FOREIGN KEY(museum_name) REFERENCES museums(museum_name), FOREIGN KEY(art_name) REFERENCES artists(artist_name), FOREIGN KEY(art_surname) REFERENCES artists(artist_surname), PRIMARY KEY(sculpture_name))";
 
 $tables = [
     'museums' => $museums,

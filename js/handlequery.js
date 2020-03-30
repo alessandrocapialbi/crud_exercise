@@ -52,6 +52,15 @@ $(document).ready(function () {
 
     });
 
+    $("input:text").keydown(function (e) { /*This is a function that checks if you are typing the right characters
+    inside form fields. For example, you cannot type numbers inside a textfield.
+    */
+        var key = e.keyCode;
+        if (!((key == 8) || (key == 9) || (key == 32) || (key == 46) || (key >= 35 && key <= 40) || (key >= 65 && key <= 90))) {
+            e.preventDefault(); //It prevents to load the action of the form when the user submits.
+        }
+    });
+
     $("#workqueryform")[0].reset(); //All the form fields are being reset.
     $("#sculpqueryform")[0].reset();
 

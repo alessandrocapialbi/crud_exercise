@@ -314,36 +314,58 @@
 
     }
 
-    function deleteWork(b) { //These two last functions delete a selected row of the table from the database.
+    function deleteWork(b) { // These two last functions delete a selected row of the table from the database.
 
-        var index = Number(b.id.split(" ")[1]);
-        index += 2;
-        var x = document.getElementById("workTable").rows[index].cells;
-        var f0 = x[0].innerHTML;
+        swal({
+            title: "Are you sure?",
+            text: "You will delete the whole record from database!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    var index = Number(b.id.split(" ")[1]);
+                    index += 2;
+                    var x = document.getElementById("workTable").rows[index].cells;
+                    var f0 = x[0].innerHTML;
 
-        $.ajax({
-            url: '../php/delete.php',
-            data: {action: 'deleteWork', workName: f0},
-            type: 'post',
-        });
+                    $.ajax({
+                        url: '../php/delete.php',
+                        data: {action: 'deleteWork', workName: f0},
+                        type: 'post',
+                    });
 
-        window.location.reload();
+                    window.location.reload();
+                }
+            });
+
     }
 
     function deleteSculp(b) {
 
-        var index = Number(b.id.split(" ")[1]);
-        index += 2;
-        var x = document.getElementById("sculpTable").rows[index].cells;
-        var f0 = x[0].innerHTML;
+        swal({
+            title: "Are you sure?",
+            text: "You will delete the whole record from database!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    var index = Number(b.id.split(" ")[1]);
+                    index += 2;
+                    var x = document.getElementById("sculpTable").rows[index].cells;
+                    var f0 = x[0].innerHTML;
 
-        $.ajax({
-            url: '../php/delete.php',
-            data: {action: 'deleteSculp', sculpName: f0},
-            type: 'post',
-        });
-
-        window.location.reload();
+                    $.ajax({
+                        url: '../php/delete.php',
+                        data: {action: 'deleteSculp', sculpName: f0},
+                        type: 'post',
+                    });
+                    window.location.reload();
+                }
+            });
     }
 
 
